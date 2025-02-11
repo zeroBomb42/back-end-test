@@ -1,0 +1,6 @@
+// สร้างไฟล์ custom-request.interface.ts เพื่อขยาย Request interface
+import { Request } from 'express';
+
+export interface CustomRequest extends Request {
+  user?: any;
+}
