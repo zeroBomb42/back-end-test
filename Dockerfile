@@ -14,9 +14,6 @@ COPY . .
 # Generate Prisma Client
 RUN npx prisma generate
 
-# Run Prisma migration (ensure the database schema is up to date)
-RUN npx prisma migrate deploy
-
 # Build the application for production
 RUN npm run build
 
@@ -29,11 +26,16 @@ WORKDIR /app
 # Copy the built application from the build stage
 COPY --from=build /app /app
 
-# Install production dependencies
-RUN npm install --only=production
+# Install postgresql-client (for migration)
+RUN apk add --no-cache postgresql-client
 
 # Expose the application port (if necessary)
 EXPOSE 3099
 
-# Ensure the database is connected and migrated before starting the app
-CMD ["sh", "-c", "npx prisma db pull && npx prisma migrate deploy && npm run start"]
+# Add entrypoint script to check database status before migration
+COPY ./docker/entrypoint.sh /usr/local/bin/entrypoint.sh
+RUN chmod +x /usr/local/bin/entrypoint.sh
+
+# Use entrypoint script to handle migration and start
+ENTRYPOINT ["entrypoint.sh"]
+CMD ["npm", "run", "start"]
