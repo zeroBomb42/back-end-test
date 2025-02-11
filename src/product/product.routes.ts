@@ -6,14 +6,15 @@ import { ProductRepository } from './product.repository';
 const router = Router();
 
 const productRepository = new ProductRepository();
-const productService = new ProductService();
+const productService = new ProductService(productRepository);
 const productController = new ProductController(productService);
 
+// กำหนดเส้นทางให้ตรงตาม controller
 router.get('/products', productController.getProducts.bind(productController));
-// router.post('/product', productController.createProduct.bind(productController));
-// router.put('/product/:id', productController.updateProduct.bind(productController));
-// router.delete('/product/:id', productController.deleteProduct.bind(productController));
-
-// Add other routes as needed
+router.get('/', productController.getProductForEdit.bind(productController));
+router.post('/', productController.createProduct.bind(productController));
+router.put('/', productController.updateProduct.bind(productController));
+router.delete('/', productController.deleteProduct.bind(productController));
+router.delete('/price', productController.deletePrice.bind(productController));
 
 export default router;

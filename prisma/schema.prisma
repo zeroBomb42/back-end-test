@@ -31,13 +31,14 @@ model AuthToken {
 
 model Product {
   id          Int      @id @default(autoincrement())
-  name        String
+  name        String   @unique
   description String?
   createdBy   String
   createdAt   DateTime @default(now())
   updatedBy   String?
   updatedAt   DateTime @updatedAt
   prices      Price[]
+  isDeleted   Boolean  @default(false)
 }
 
 model Price {
@@ -49,4 +50,5 @@ model Price {
   updatedBy String?
   updatedAt DateTime @updatedAt
   product   Product  @relation(fields: [productId], references: [id])
+  isDeleted Boolean  @default(false)
 }

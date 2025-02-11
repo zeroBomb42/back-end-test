@@ -1,22 +1,31 @@
 import { Injectable } from '@nestjs/common';
-import { PrismaClient } from '@prisma/client';
+import { ProductRepository } from './product.repository';
 
 @Injectable()
 export class ProductService {
-  private readonly prisma = new PrismaClient();
+  constructor(private readonly productRepository: ProductRepository) {}
 
   async findProductsByNameAndPrice(name: string, price: number): Promise<any> {
-    return this.prisma.product.findMany({
-      where: {
-        name: name ? { contains: name } : '',
-        prices: {
-          some: {
-            amount: price ? { equals: price } : 0,
-          },
-        },
-      },
-    });
+    return this.productRepository.findProductsByNameAndPrice(name, price);
   }
 
-  // เพิ่มเมธอดอื่นๆ ตามที่ต้องการ
+  async createProduct(data: any, userName: string): Promise<any> {
+    return this.productRepository.createProduct(data, userName);
+  }
+
+  async updateProduct(data: any, userName: string): Promise<any> {
+    return this.productRepository.updateProduct(data, userName);
+  }
+
+  async getProductForEdit(productId: number): Promise<any> {
+    return this.productRepository.getProductForEdit(productId);
+  }
+
+  async softDeletePrice(productId: number, priceId: number, userName: string): Promise<any> {
+    return this.productRepository.softDeletePrice(productId, priceId, userName);
+  }
+
+  async softDeleteProduct(productId: number, userName: string): Promise<any> {
+    return this.productRepository.softDeleteProduct(productId, userName);
+  }
 }

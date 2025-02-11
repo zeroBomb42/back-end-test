@@ -1,6 +1,7 @@
 import { Request, Response, NextFunction } from 'express';
 import { Injectable, NestMiddleware } from '@nestjs/common';
 import { ObjectSchema } from 'joi';
+import { failed } from '../config/response';
 
 // ✅ ใช้ Factory Function แทน
 export function createValidationMiddleware(schema: ObjectSchema, property: string) {
@@ -11,10 +12,8 @@ export function createValidationMiddleware(schema: ObjectSchema, property: strin
       const { error } = schema.validate(data, { abortEarly: false });
 
       if (error) {
-        return res.status(400).json({
-          data: null,
-          error: error.details.map((d) => d.message),
-        });
+        const errorMessage = error.details.map((d) => d.message.replace(/\"/g, '')).join(', ');
+        return failed(req, res, `Validation failed: ${errorMessage}`, error);
       }
       next();
     }
