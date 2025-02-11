@@ -1,0 +1,1295 @@
+{
+	"info": {
+		"_postman_id": "3f31c1ab-8238-4807-bec9-ec31259c4518",
+		"name": "BE",
+		"schema": "https://schema.getpostman.com/json/collection/v2.0.0/collection.json",
+		"_exporter_id": "26313639",
+		"_collection_link": "https://blue-desert-640975.postman.co/workspace/My-Workspace~bd1a5bac-020a-450a-8664-158bb90108f7/collection/26313639-3f31c1ab-8238-4807-bec9-ec31259c4518?action=share&source=collection_link&creator=26313639"
+	},
+	"item": [
+		{
+			"name": "auth",
+			"item": [
+				{
+					"name": "[1] Auth | Register",
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"userName\": \"john_doe5\",\r\n  \"password\": \"$2a$10$jQQ3ZOsRfSG4RTudtVi64.xSlJ1OFHvb7hOzm9Hcz1iaVpB/rP/IC\", //securePassword123\r\n  \"email\": \"john.doe5@example.com\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": "http://localhost:3099/back-end-test/api/v1/auth/register"
+					},
+					"response": [
+						{
+							"name": "Register success",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n  \"userName\": \"john_doe3\",\r\n  \"password\": \"securePassword123\",\r\n  \"email\": \"john.doe3@example.com\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": "http://localhost:3099/back-end-test/api/v1/auth/register"
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "57"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"39-FycOu8dZOO181ehz5zJ7df5EJTg\""
+								},
+								{
+									"key": "Date",
+									"value": "Mon, 10 Feb 2025 15:16:02 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"success\": true,\n    \"message\": \"Register success\",\n    \"result\": []\n}"
+						},
+						{
+							"name": "User already exists",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n  \"userName\": \"john_doe3\",\r\n  \"password\": \"securePassword123\",\r\n  \"email\": \"john.doe3@example.com\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": "http://localhost:3099/back-end-test/api/v1/auth/register"
+							},
+							"status": "Bad Request",
+							"code": 400,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "61"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"3d-fmKLorS4Xxj15vy9x8uhg2opg/E\""
+								},
+								{
+									"key": "Date",
+									"value": "Mon, 10 Feb 2025 15:16:55 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"success\": false,\n    \"message\": \"User already exists\",\n    \"result\": {}\n}"
+						}
+					]
+				},
+				{
+					"name": "[2] Auth | Login",
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"userName\": \"john_doe5\",\r\n  \"password\": \"$2a$10$jQQ3ZOsRfSG4RTudtVi64.xSlJ1OFHvb7hOzm9Hcz1iaVpB/rP/IC\" //securePassword123\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": "http://localhost:3099/back-end-test/api/v1/auth/login"
+					},
+					"response": [
+						{
+							"name": "Login successful",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n  \"userName\": \"john_doe5\",\r\n  \"password\": \"$2a$10$jQQ3ZOsRfSG4RTudtVi64.xSlJ1OFHvb7hOzm9Hcz1iaVpB/rP/IC\" //securePassword123\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": "http://localhost:3099/back-end-test/api/v1/auth/login"
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "272"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"110-2yyqUquK8l8I9THKUTlAiMx1nSs\""
+								},
+								{
+									"key": "Date",
+									"value": "Mon, 10 Feb 2025 17:13:06 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"success\": true,\n    \"message\": \"Login successful\",\n    \"result\": {\n        \"message\": \"Login successful\",\n        \"access_token\": \"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6ImpvaG5fZG9lNSIsInN1YiI6NywiaWF0IjoxNzM5MjA3NTg2LCJleHAiOjE3MzkyOTM5ODZ9.kf4aUWZ_ToWw4SHg8ATtLXaaT9wLKtIl-NAhGDnknwI\"\n    }\n}"
+						},
+						{
+							"name": "User not found",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n  \"userName\": \"john_doe6\",\r\n  \"password\": \"$2a$10$jQQ3ZOsRfSG4RTudtVi64.xSlJ1OFHvb7hOzm9Hcz1iaVpB/rP/IC\" //securePassword123\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": "http://localhost:3099/back-end-test/api/v1/auth/login"
+							},
+							"status": "Bad Request",
+							"code": 400,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "56"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"38-mLuRIqibDAhM6gBwK3Bu1ExSGJs\""
+								},
+								{
+									"key": "Date",
+									"value": "Mon, 10 Feb 2025 17:16:19 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"success\": false,\n    \"message\": \"User not found\",\n    \"result\": {}\n}"
+						},
+						{
+							"name": "Invalid password",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n  \"userName\": \"john_doe5\",\r\n  \"password\": \"$2a$10$jQQ3ZOsRfSG4RTudtVi64.xSlJ1OFHvb7hOzm9Hcz1iaVpB/rP/IC2\" //securePassword123\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": "http://localhost:3099/back-end-test/api/v1/auth/login"
+							},
+							"status": "Bad Request",
+							"code": 400,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "58"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"3a-3IOLmtFK62CGkZBnCPptYZV81AU\""
+								},
+								{
+									"key": "Date",
+									"value": "Mon, 10 Feb 2025 17:16:52 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"success\": false,\n    \"message\": \"Invalid password\",\n    \"result\": {}\n}"
+						}
+					]
+				},
+				{
+					"name": "[3] Auth | Logout",
+					"request": {
+						"auth": {
+							"type": "apikey",
+							"apikey": {
+								"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyTmFtZSI6ImpvaG5fZG9lNSIsInN1YiI6NywiaWF0IjoxNzM5MjEwMzU4LCJleHAiOjE3MzkyOTY3NTh9.BOyMg_HlVoWo9pGitaYgIO3_RosrssEVQcmKbT_TOso",
+								"key": "authorization"
+							}
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": "http://localhost:3099/back-end-test/api/v1/auth/logout"
+					},
+					"response": [
+						{
+							"name": "Unauthorized",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": "http://localhost:3099/back-end-test/api/v1/auth/logout"
+							},
+							"status": "Unauthorized",
+							"code": 401,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "55"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"37-olo7apBn8B3QRkH5FLauxwWnIv0\""
+								},
+								{
+									"key": "Date",
+									"value": "Mon, 10 Feb 2025 17:56:27 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"message\": \"Invalid auth token\",\n    \"error\": \"Unauthorized\"\n}"
+						},
+						{
+							"name": "Logged out successfully",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": "http://localhost:3099/back-end-test/api/v1/auth/logout"
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "64"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"40-/EwJeEA2njjAPrqTaXnljf10UL8\""
+								},
+								{
+									"key": "Date",
+									"value": "Mon, 10 Feb 2025 17:59:35 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"success\": true,\n    \"message\": \"Logged out successfully\",\n    \"result\": {}\n}"
+						}
+					]
+				}
+			]
+		},
+		{
+			"name": "product",
+			"item": [
+				{
+					"name": "[1] Product | Products",
+					"request": {
+						"auth": {
+							"type": "apikey",
+							"apikey": {
+								"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyTmFtZSI6ImpvaG5fZG9lNSIsInN1YiI6MSwiaWF0IjoxNzM5MjkzNjc1LCJleHAiOjE3MzkzODAwNzV9.-6Ba7OjJnruXnQePidyxirAscbyb2rA6hdsVBnBo6-M",
+								"key": "authorization"
+							}
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:3099/back-end-test/api/v1/product/products?name=New Product&price=",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3099",
+							"path": [
+								"back-end-test",
+								"api",
+								"v1",
+								"product",
+								"products"
+							],
+							"query": [
+								{
+									"key": "name",
+									"value": "New Product"
+								},
+								{
+									"key": "price",
+									"value": ""
+								}
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Unauthorized",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": "http://localhost:3099/back-end-test/api/v1/product/products"
+							},
+							"status": "Unauthorized",
+							"code": 401,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "59"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"3b-EpwE0bD7kq6Bso9gDITynBTl9TE\""
+								},
+								{
+									"key": "Date",
+									"value": "Mon, 10 Feb 2025 16:48:15 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"message\": \"No auth token provided\",\n    \"error\": \"Unauthorized\"\n}"
+						},
+						{
+							"name": "Get products success",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": "http://localhost:3099/back-end-test/api/v1/product/products"
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "61"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"3d-/KQc903GRDpAPNNRZqdt9028p1k\""
+								},
+								{
+									"key": "Date",
+									"value": "Mon, 10 Feb 2025 17:14:17 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"success\": true,\n    \"message\": \"Get products success\",\n    \"result\": []\n}"
+						},
+						{
+							"name": "Get products success",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "http://localhost:3099/back-end-test/api/v1/product/products?name=New Product&price=",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "3099",
+									"path": [
+										"back-end-test",
+										"api",
+										"v1",
+										"product",
+										"products"
+									],
+									"query": [
+										{
+											"key": "name",
+											"value": "New Product"
+										},
+										{
+											"key": "price",
+											"value": ""
+										}
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "90"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"5a-dhf+OWn/TCDNmv7EJH5a7AqsKq4\""
+								},
+								{
+									"key": "Date",
+									"value": "Tue, 11 Feb 2025 16:58:03 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"success\": true,\n    \"message\": \"Get products success\",\n    \"result\": [\n        {\n            \"id\": 1,\n            \"name\": \"New Product\"\n        }\n    ]\n}"
+						}
+					]
+				},
+				{
+					"name": "[2] Product | Create Product",
+					"request": {
+						"auth": {
+							"type": "apikey",
+							"apikey": {
+								"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyTmFtZSI6ImpvaG5fZG9lNSIsInN1YiI6MSwiaWF0IjoxNzM5MjkzNjc1LCJleHAiOjE3MzkzODAwNzV9.-6Ba7OjJnruXnQePidyxirAscbyb2rA6hdsVBnBo6-M",
+								"key": "authorization"
+							}
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"name\": \"New Product2\",\r\n  \"description\": \"Description of the new product2\",\r\n  \"prices\": [\r\n    {\r\n      \"amount\": 49.99\r\n    },\r\n    {\r\n      \"amount\": 79.99\r\n    }\r\n  ]\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": "http://localhost:3099/back-end-test/api/v1/product"
+					},
+					"response": [
+						{
+							"name": "Product with this name already exists",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n  \"name\": \"New Product\",\r\n  \"description\": \"Description of the new product\",\r\n  \"prices\": [\r\n    {\r\n      \"amount\": 49.99\r\n    },\r\n    {\r\n      \"amount\": 79.99\r\n    }\r\n  ]\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": "http://localhost:3099/back-end-test/api/v1/product"
+							},
+							"status": "Bad Request",
+							"code": 400,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "102"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"66-IVSFjhmj8B4hgsfQLRyagE+oW80\""
+								},
+								{
+									"key": "Date",
+									"value": "Tue, 11 Feb 2025 17:19:12 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"success\": false,\n    \"message\": \"Create product failed: Product with this name already exists\",\n    \"result\": {}\n}"
+						},
+						{
+							"name": "Product created successfully",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n  \"name\": \"New Product2\",\r\n  \"description\": \"Description of the new product2\",\r\n  \"prices\": [\r\n    {\r\n      \"amount\": 49.99\r\n    },\r\n    {\r\n      \"amount\": 79.99\r\n    }\r\n  ]\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": "http://localhost:3099/back-end-test/api/v1/product"
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "69"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"45-VfjRcVD/7gf0hEeZt4U+OGsRQUQ\""
+								},
+								{
+									"key": "Date",
+									"value": "Tue, 11 Feb 2025 17:19:39 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"success\": true,\n    \"message\": \"Product created successfully\",\n    \"result\": {}\n}"
+						}
+					]
+				},
+				{
+					"name": "[3] Product | Product For Edit",
+					"request": {
+						"auth": {
+							"type": "apikey",
+							"apikey": {
+								"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyTmFtZSI6ImpvaG5fZG9lNSIsInN1YiI6MSwiaWF0IjoxNzM5MjkzNjc1LCJleHAiOjE3MzkzODAwNzV9.-6Ba7OjJnruXnQePidyxirAscbyb2rA6hdsVBnBo6-M",
+								"key": "authorization"
+							}
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:3099/back-end-test/api/v1/product/?id=1",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3099",
+							"path": [
+								"back-end-test",
+								"api",
+								"v1",
+								"product",
+								""
+							],
+							"query": [
+								{
+									"key": "id",
+									"value": "1"
+								}
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Product details fetched successfully",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "http://localhost:3099/back-end-test/api/v1/product/?id=1",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "3099",
+									"path": [
+										"back-end-test",
+										"api",
+										"v1",
+										"product",
+										""
+									],
+									"query": [
+										{
+											"key": "id",
+											"value": "1"
+										}
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "210"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"d2-waY3BD8sTcYjIo6TV42pDiL5TYg\""
+								},
+								{
+									"key": "Date",
+									"value": "Tue, 11 Feb 2025 17:38:57 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"success\": true,\n    \"message\": \"Product details fetched successfully\",\n    \"result\": {\n        \"id\": 1,\n        \"name\": \"New Product\",\n        \"description\": \"Description of the new product\",\n        \"prices\": [\n            {\n                \"id\": 1,\n                \"amount\": 49.99\n            },\n            {\n                \"id\": 2,\n                \"amount\": 79.99\n            }\n        ]\n    }\n}"
+						}
+					]
+				},
+				{
+					"name": "[4] Product | Update Product",
+					"request": {
+						"auth": {
+							"type": "apikey",
+							"apikey": {
+								"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyTmFtZSI6ImpvaG5fZG9lNSIsInN1YiI6MSwiaWF0IjoxNzM5MjkzNjc1LCJleHAiOjE3MzkzODAwNzV9.-6Ba7OjJnruXnQePidyxirAscbyb2rA6hdsVBnBo6-M",
+								"key": "authorization"
+							}
+						},
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"id\": 1,\r\n    \"name\": \"New Product\",\r\n    \"description\": \"Description of the new product\",\r\n    \"prices\": [\r\n        {\r\n            \"id\": 1,\r\n            \"amount\": 49.98\r\n        },\r\n        {\r\n            \"id\": 2,\r\n            \"amount\": 79.99\r\n        }\r\n    ]\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": "http://localhost:3099/back-end-test/api/v1/product"
+					},
+					"response": [
+						{
+							"name": "Product updated successfully",
+							"originalRequest": {
+								"method": "PUT",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"id\": 1,\r\n    \"name\": \"New Product\",\r\n    \"description\": \"Description of the new product\",\r\n    \"prices\": [\r\n        {\r\n            \"id\": 1,\r\n            \"amount\": 49.98\r\n        },\r\n        {\r\n            \"id\": 2,\r\n            \"amount\": 79.99\r\n        }\r\n    ]\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": "http://localhost:3099/back-end-test/api/v1/product"
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "69"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"45-dMTsVOinVGbpqRStX9VgjWTlk+E\""
+								},
+								{
+									"key": "Date",
+									"value": "Tue, 11 Feb 2025 17:44:44 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"success\": true,\n    \"message\": \"Product updated successfully\",\n    \"result\": {}\n}"
+						}
+					]
+				},
+				{
+					"name": "[5] Product | Delete Product",
+					"request": {
+						"auth": {
+							"type": "apikey",
+							"apikey": {
+								"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyTmFtZSI6ImpvaG5fZG9lNSIsInN1YiI6MSwiaWF0IjoxNzM5MjkzNjc1LCJleHAiOjE3MzkzODAwNzV9.-6Ba7OjJnruXnQePidyxirAscbyb2rA6hdsVBnBo6-M",
+								"key": "authorization"
+							}
+						},
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:3099/back-end-test/api/v1/product/?productId=3",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3099",
+							"path": [
+								"back-end-test",
+								"api",
+								"v1",
+								"product",
+								""
+							],
+							"query": [
+								{
+									"key": "productId",
+									"value": "3"
+								}
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Delete product failed: Product not found",
+							"originalRequest": {
+								"method": "DELETE",
+								"header": [],
+								"url": {
+									"raw": "http://localhost:3099/back-end-test/api/v1/product/?productId=10",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "3099",
+									"path": [
+										"back-end-test",
+										"api",
+										"v1",
+										"product",
+										""
+									],
+									"query": [
+										{
+											"key": "productId",
+											"value": "10"
+										}
+									]
+								}
+							},
+							"status": "Bad Request",
+							"code": 400,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "82"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"52-28kH4JklhVp7O1hwn6sGexQQ17U\""
+								},
+								{
+									"key": "Date",
+									"value": "Tue, 11 Feb 2025 18:03:33 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"success\": false,\n    \"message\": \"Delete product failed: Product not found\",\n    \"result\": {}\n}"
+						},
+						{
+							"name": "Product deleted successfully",
+							"originalRequest": {
+								"method": "DELETE",
+								"header": [],
+								"url": {
+									"raw": "http://localhost:3099/back-end-test/api/v1/product/?productId=3",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "3099",
+									"path": [
+										"back-end-test",
+										"api",
+										"v1",
+										"product",
+										""
+									],
+									"query": [
+										{
+											"key": "productId",
+											"value": "3"
+										}
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "69"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"45-F+84F/J3QwECaw/bpZoENiHz66w\""
+								},
+								{
+									"key": "Date",
+									"value": "Tue, 11 Feb 2025 18:06:56 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"success\": true,\n    \"message\": \"Product deleted successfully\",\n    \"result\": {}\n}"
+						}
+					]
+				},
+				{
+					"name": "[6] Product | Delete PriceId",
+					"request": {
+						"auth": {
+							"type": "apikey",
+							"apikey": {
+								"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyTmFtZSI6ImpvaG5fZG9lNSIsInN1YiI6MSwiaWF0IjoxNzM5MjkzNjc1LCJleHAiOjE3MzkzODAwNzV9.-6Ba7OjJnruXnQePidyxirAscbyb2rA6hdsVBnBo6-M",
+								"key": "authorization"
+							}
+						},
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:3099/back-end-test/api/v1/product/price?productId=1&priceId=5",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3099",
+							"path": [
+								"back-end-test",
+								"api",
+								"v1",
+								"product",
+								"price"
+							],
+							"query": [
+								{
+									"key": "productId",
+									"value": "1"
+								},
+								{
+									"key": "priceId",
+									"value": "5"
+								}
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Price deleted successfully",
+							"originalRequest": {
+								"method": "DELETE",
+								"header": [],
+								"url": {
+									"raw": "http://localhost:3099/back-end-test/api/v1/product/price?productId=1&priceId=5",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "3099",
+									"path": [
+										"back-end-test",
+										"api",
+										"v1",
+										"product",
+										"price"
+									],
+									"query": [
+										{
+											"key": "productId",
+											"value": "1"
+										},
+										{
+											"key": "priceId",
+											"value": "5"
+										}
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "67"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"43-5UaGcUMdU/247mZPpXpwn4PN00Q\""
+								},
+								{
+									"key": "Date",
+									"value": "Tue, 11 Feb 2025 18:20:16 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"success\": true,\n    \"message\": \"Price deleted successfully\",\n    \"result\": {}\n}"
+						},
+						{
+							"name": "Delete price failed: Price not found",
+							"originalRequest": {
+								"method": "DELETE",
+								"header": [],
+								"url": {
+									"raw": "http://localhost:3099/back-end-test/api/v1/product/price?productId=1&priceId=20",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "3099",
+									"path": [
+										"back-end-test",
+										"api",
+										"v1",
+										"product",
+										"price"
+									],
+									"query": [
+										{
+											"key": "productId",
+											"value": "1"
+										},
+										{
+											"key": "priceId",
+											"value": "20"
+										}
+									]
+								}
+							},
+							"status": "Bad Request",
+							"code": 400,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "78"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"4e-QEkz7twSwWDMZFaYIUNPur+Ltv0\""
+								},
+								{
+									"key": "Date",
+									"value": "Tue, 11 Feb 2025 18:21:00 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"success\": false,\n    \"message\": \"Delete price failed: Price not found\",\n    \"result\": {}\n}"
+						}
+					]
+				}
+			]
+		}
+	]
+}
