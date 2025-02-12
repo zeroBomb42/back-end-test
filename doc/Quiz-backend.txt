@@ -1,0 +1,54 @@
+BackEnd Test
+
+Requirement
+
+- มี UI design ตามใน Figma LINK : <https://www.figma.com/design/QK523TtqQNoVTGTyg4aPzx/simple-application?node-id=1-4&t=l2WqheDcOr6Pzri7-1>
+- ข้อมูลชื่อสินค้า (Name) ต้อง Unique
+- API จะต้องเป็น http status 401 เมื่อ invalid access token
+- API จะต้องเป็น http status 400 เมื่อ request body ไม่ถูกต้อง
+- นอกนั้น API จะเป็น http status 20x
+- ใน response จะประกอบด้วย
+  - data ข้อมูลจากแต่ละ API (ถ้ามี)
+  - error ข้อความที่สื่อถึงข้อผิดพลาดที่เกิดขึ้นสามารถนำมาแสดงบอกผู้ใช้งานได้ (ถ้ามี)
+    ตัวอย่าง
+    - success: { "data" : [{ id: 1, name: "p1" }], error: null }
+    - error: { "data" : null, error: "something went wrong." }
+- ข้อกำหนด framework/dependencies ในการ dev
+- framework เป็น nestJs
+- ใช้ prisma สำหรับสื่อสารกับ database
+- database ใช้เป็น postgres sql
+
+Guide line
+
+- สร้าง postgres database ด้วย image postgres:13-alpine3.20
+- ออกแบบ table, relation และ index ที่เหมาะสมตาม design
+- นำ schema ที่ออกแบบมาใส่ model ของ prisma
+- รัน migration ด้วย prisma
+- เริ่ม dev backend ด้วย nestjs โดย design api ที่ควรมีเพื่อ support การทำงานของ frontend และ handle error ที่ user ควรรับทราบ
+- pack ทั้งหมดลงใน docker-compose
+
+สิ่งที่คาดหวัง
+
+- dockerfile สำหรับ build image backend (สำหรับ release)
+- docker-compose ที่มี service ทั้งหมดที่รัน docker-compose up แล้วสามารถใช้งาน api ได้
+- ออกแบบ api และ database สอดคล้องกับ UI design และการทำงานของ frontend
+- มีการ validate request body และ validate ส่วนอื่นๅที่อาจจะนำไปสู่ข้อผิดพลาดในระบบ ก่อนจะทำ function หลัก
+- ใช้ soft delete เมื่อมีการลบข้อมูล
+- มีการทำ index ใน column ที่ควรทำ
+- มีการครอบ transaction ในการ สร้างหรือแก้ไขข้อมูล
+- มีการเก็บ userId เมื่อ สร้างหรือแก้ไขโดยใช้ค่าจาก token
+- มีการทำ public / protect route ด้วย Guards ของ nestjs
+- ใช้ feature ของ nestjs ในการ handle response และ error ให้ออกไปตามรูปแบบที่ต้องการ
+- การทำ paging ในการดึงข้อมูล
+
+ คำถาม 1 ข้อ
+
+- ถ้า api ที่ทำมีปัญหา user แจ้งมาว่า update ข้อมูลแล้วข้อมูลไม่เปลี่ยนจะแก้ไขปัญหานี้ยังไง จะมีเครื่องมือหรือวิธีการอะไรในการ monitor หรือ tracking เพื่อให้ตอบคำถามของ user ได้
+  - ใช้เครื่องมือ Monitoring และ Tracking
+  - Sentry หรือ Elastic APM → แจ้งเตือน error
+  - pgAdmin (PostgreSQL) → ดู SQL Query
+
+  - Debugging จากต้นเหตุ
+  - ถ้า API ได้รับข้อมูลถูกต้องแต่ DB ไม่เปลี่ยน → ตรวจ SQL
+  - ถ้า API ไม่ได้รับข้อมูล → เช็ค request จาก client
+  - ถ้า response ผิดปกติ → ดู error handling
